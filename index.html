@@ -114,6 +114,24 @@
   .map iframe{width:100%;height:100%;min-height:360px;border:0}
   @media(max-width:860px){.loc-grid{grid-template-columns:1fr}}
 
+  /* booking */
+  .booking{background:var(--sand)}
+  .bk-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:40px;align-items:start}
+  .bk-form{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid #eadfcd;display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+  .bk-form label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem;color:var(--navy)}
+  .bk-form .full{grid-column:1/-1}
+  .bk-form input,.bk-form select,.bk-form textarea{font-family:inherit;font-size:1rem;padding:11px 12px;border:1.5px solid #d9c9ae;border-radius:12px;background:var(--cream);color:var(--ink)}
+  .bk-form input:focus,.bk-form select:focus,.bk-form textarea:focus{outline:none;border-color:var(--orange)}
+  .bk-form textarea{min-height:84px;resize:vertical}
+  .bk-form button{grid-column:1/-1;justify-content:center;border:0;cursor:pointer;font-family:inherit;font-size:1rem;background:#25D366}
+  .bk-form button:hover{background:#1da851}
+  .bk-hint{grid-column:1/-1;font-size:.82rem;color:var(--muted);text-align:center}
+  .bk-points{list-style:none;margin-top:1.2rem}
+  .bk-points li{padding:8px 0;display:flex;gap:10px;color:var(--brown)}
+  .bk-points li::before{content:"•";color:var(--orange-d);font-weight:800}
+  @media(max-width:860px){.bk-grid{grid-template-columns:1fr}}
+  @media(max-width:520px){.bk-form{grid-template-columns:1fr}}
+
   footer{background:#0f2747;color:#c9d6ea;padding:36px 0;font-size:.9rem}
   .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .foot a{text-decoration:none;color:#fff;font-weight:600}
@@ -139,6 +157,7 @@
       <li><a href="#tentang">Tentang</a></li>
       <li><a href="#menu">Menu</a></li>
       <li><a href="#coworking">Co-Working</a></li>
+      <li><a href="#booking">Booking</a></li>
       <li><a href="#lokasi">Lokasi</a></li>
     </ul>
     <a class="btn" href="https://wa.me/628115305456?text=Halo%208020%20x%20Coco%20Crispy%2C%20saya%20mau%20pesan" target="_blank" rel="noopener">Pesan via WA</a>
@@ -163,7 +182,7 @@
       </div>
     </div>
     <div class="hero-img">
-      <img src="public/konten/02-pintu-masuk.jpg" alt="Tampak depan 8020 Coffee x Coco Crispy di Ruko Sentra Eropa 3, Balikpapan Baru">
+      <img src="public/konten/02-pintu-masuk.jpg" alt="Tampak depan 8020 Coffee x Coco Crispy, Balikpapan Baru">
       <div class="tag">The Best Classic Coffee in Town<small>Specialty Cold Brew | Manual Brew</small></div>
     </div>
   </div>
@@ -245,12 +264,61 @@
         <li>Private room untuk diskusi tertutup</li>
         <li>Area kerja santai di lantai bawah</li>
       </ul>
-      <a class="btn" href="https://wa.me/628115305456?text=Halo%208020%2C%20saya%20mau%20tanya%20booking%20ruangan%20co-working" target="_blank" rel="noopener">Tanya harga & booking</a>
+      <a class="btn" href="#booking">Isi form booking</a>
     </div>
     <div class="cw-photos">
       <img src="public/konten/08-meeting-room.jpg" alt="Meeting room 8020 dengan layar proyektor">
       <img src="public/konten/09-private-room.jpg" alt="Private room dan training room 8020">
     </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="wrap bk-grid">
+    <div>
+      <span class="eyebrow">Booking & reservasi</span>
+      <h2>Booking ruangan atau meja</h2>
+      <p class="lead">Isi form singkat ini, lalu klik kirim. WhatsApp akan terbuka dengan pesan yang sudah terisi, tinggal tekan kirim. Tim 8020 akan konfirmasi ketersediaan dan harga.</p>
+      <ul class="bk-points">
+        <li>Meeting room dengan proyektor & AC</li>
+        <li>Training room untuk kelas dan workshop</li>
+        <li>Private room untuk diskusi tertutup</li>
+        <li>Meja untuk arisan, kumpul, dan acara kecil</li>
+      </ul>
+    </div>
+    <form class="bk-form" id="bkForm" novalidate>
+      <label class="full">Nama
+        <input type="text" name="nama" required placeholder="Nama kamu" autocomplete="name">
+      </label>
+      <label class="full">Keperluan
+        <select name="keperluan" required>
+          <option value="Sewa meeting room">Sewa meeting room</option>
+          <option value="Sewa training room">Sewa training room</option>
+          <option value="Sewa private room">Sewa private room</option>
+          <option value="Co-working / WFC">Co-working / WFC</option>
+          <option value="Arisan / kumpul / acara">Arisan / kumpul / acara</option>
+          <option value="Pesan makanan / catering">Pesan makanan / catering</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </label>
+      <label>Tanggal
+        <input type="date" name="tanggal" required>
+      </label>
+      <label>Jam mulai
+        <input type="time" name="jam" required>
+      </label>
+      <label>Durasi (jam)
+        <input type="number" name="durasi" min="1" max="15" value="2">
+      </label>
+      <label>Jumlah orang
+        <input type="number" name="orang" min="1" max="200" value="4">
+      </label>
+      <label class="full">Catatan (opsional)
+        <textarea name="catatan" placeholder="Contoh: butuh proyektor, pesan 10 Coco-Rice Classic untuk makan siang"></textarea>
+      </label>
+      <button type="submit" class="btn">Kirim via WhatsApp</button>
+      <p class="bk-hint">WhatsApp 0811-5305-456 • Buka setiap hari 08.00-23.00 WITA</p>
+    </form>
   </div>
 </section>
 
@@ -274,8 +342,8 @@
       <span class="eyebrow">Lokasi & jam buka</span>
       <h2>Datang ke 8020</h2>
       <dl>
-        <dt>Alamat</dt>
-        <dd>Ruko Sentra Eropa Blok AC5 No.1, Damai, Balikpapan Kota, Balikpapan 76114</dd>
+        <dt>Lokasi</dt>
+        <dd>Balikpapan Baru. Klik "Petunjuk Arah" untuk buka rute di Google Maps.</dd>
         <dt>Jam buka</dt>
         <dd>Setiap hari, 08.00-23.00 WITA</dd>
         <dt>Pesan & reservasi</dt>
@@ -300,6 +368,8 @@
       <a href="https://www.instagram.com/delapanpuluhduapuluh/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.tiktok.com/@8020.coffee.coco" target="_blank" rel="noopener">TikTok</a>
       <a href="https://www.youtube.com/channel/UCdT4PqyyaXlgCzgiTB1upiw" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.facebook.com/profile.php?id=100063627771497" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://x.com/8020coco" target="_blank" rel="noopener">X</a>
     </div>
   </div>
 </footer>
@@ -315,6 +385,29 @@
       document.getElementById(t.dataset.tab).classList.add('active');
     });
   });
+
+  (function(){
+    var f=document.getElementById('bkForm');
+    var d=f.tanggal; var t=new Date(); d.min=t.toISOString().slice(0,10);
+    function fmtDate(v){ if(!v) return '-'; var p=v.split('-'); var b=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des']; return parseInt(p[2],10)+' '+b[parseInt(p[1],10)-1]+' '+p[0]; }
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!f.nama.value.trim()){ f.nama.focus(); return; }
+      if(!f.tanggal.value){ f.tanggal.focus(); return; }
+      if(!f.jam.value){ f.jam.focus(); return; }
+      var msg='Halo 8020 x Coco Crispy, saya mau booking.\n\n'+
+        'Nama: '+f.nama.value.trim()+'\n'+
+        'Keperluan: '+f.keperluan.value+'\n'+
+        'Tanggal: '+fmtDate(f.tanggal.value)+'\n'+
+        'Jam mulai: '+f.jam.value+' WITA\n'+
+        'Durasi: '+(f.durasi.value||'-')+' jam\n'+
+        'Jumlah orang: '+(f.orang.value||'-')+'\n'+
+        (f.catatan.value.trim()?'Catatan: '+f.catatan.value.trim()+'\n':'')+
+        '\nMohon info ketersediaan dan harganya. Terima kasih.';
+      try{ gtag('event','booking_wa',{keperluan:f.keperluan.value}); }catch(err){}
+      window.open('https://wa.me/628115305456?text='+encodeURIComponent(msg),'_blank','noopener');
+    });
+  })();
 </script>
 </body>
 </html>
