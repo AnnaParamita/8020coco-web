@@ -407,9 +407,21 @@
         (f.catatan.value.trim()?'Catatan: '+f.catatan.value.trim()+'\n':'')+
         '\nMohon info ketersediaan dan harganya. Terima kasih.';
       try{ gtag('event','booking_wa',{keperluan:f.keperluan.value}); }catch(err){}
+      try{ gtag('event','conversion',{send_to:'AW-18561015708/EsUICOastrcdEJy_ypJF',transport_type:'beacon'}); }catch(err){}
       window.open('https://wa.me/628115305456?text='+encodeURIComponent(msg),'_blank','noopener');
     });
   })();
+</script>
+<script>
+  // Konversi Google Ads: klik WhatsApp
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');
+    if(!a) return;
+    var h=a.getAttribute('href')||'';
+    if(/wa\.me|whatsapp/i.test(h)){
+      try{ gtag('event','conversion',{send_to:'AW-18561015708/EsUICOastrcdEJy_ypJF',transport_type:'beacon'}); }catch(err){}
+    }
+  },true);
 </script>
 </body>
 </html>
