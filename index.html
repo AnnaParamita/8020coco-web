@@ -450,16 +450,16 @@
 </style>
 <div class="wa-sheet" id="waSheet" role="dialog" aria-label="Chat WhatsApp 8020">
   <button class="wa-close" type="button" aria-label="Tutup">&times;</button>
-  <h3 id="waSheetTitle">Mau tanya atau booking?</h3>
-  <p id="waSheetText">Chat langsung dengan tim 8020 di WhatsApp, dibalas cepat.</p>
+  <h3 id="waSheetTitle">Mau pesan, booking atau tanya-tanya?</h3>
+  <p id="waSheetText">Kopi, Crispy Coco Chicken, co-working & nongkrong malam sampai 23.00. Chat langsung tim 8020 di WhatsApp.</p>
   <a class="wa-big" id="waSheetBtn" href="https://wa.me/628115305456?text=Halo%208020%2C%20saya%20mau%20tanya" target="_blank" rel="noopener">Chat WhatsApp sekarang</a>
   <small>WA 0811-5305-456 · Buka setiap hari 08.00-23.00</small>
 </div>
 <script>
-  // Panel WA besar untuk pengunjung dari iklan (URL berisi sl=, gclid, gbraid, wbraid)
+  // Panel WA besar untuk semua pengunjung; isi menyesuaikan iklan (sl=) bila ada
   (function(){
     var q=new URLSearchParams(location.search);
-    if(!(q.get('sl')||q.get('gclid')||q.get('gbraid')||q.get('wbraid'))) return;
+    var fromAd=!!(q.get('sl')||q.get('gclid')||q.get('gbraid')||q.get('wbraid'));
     var sl=(q.get('sl')||'').toLowerCase();
     var M={
       cowork:['Sewa ruang co-working?','Rp300rb / 3 jam per ruang, diskon 20% khusus November. Tanya ketersediaan & harga member.','Halo 8020, saya mau tanya sewa co-working / meeting room'],
@@ -477,7 +477,7 @@
     }
     var s=document.getElementById('waSheet');
     try{ if(sessionStorage.getItem('waSheetClosed')) return; }catch(e){}
-    setTimeout(function(){ s.classList.add('show'); },1200);
+    setTimeout(function(){ s.classList.add('show'); },fromAd?1200:4000);
     s.querySelector('.wa-close').addEventListener('click',function(){
       s.classList.remove('show'); try{ sessionStorage.setItem('waSheetClosed','1'); }catch(e){}
     });
