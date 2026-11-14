@@ -484,7 +484,7 @@
     }
     var s=document.getElementById('waSheet');
     try{ if(sessionStorage.getItem('waSheetClosed')) return; }catch(e){}
-    setTimeout(function(){ s.classList.add('show'); },fromAd?1200:4000);
+    setTimeout(function(){ s.classList.add('show'); },300);
     s.querySelector('.wa-close').addEventListener('click',function(){
       s.classList.remove('show'); try{ sessionStorage.setItem('waSheetClosed','1'); }catch(e){}
     });
