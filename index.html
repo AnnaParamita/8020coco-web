@@ -439,6 +439,50 @@
     });
   })();
 </script>
+<style>
+  .wa-sheet{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-radius:22px 22px 0 0;box-shadow:0 -12px 40px -10px rgba(0,0,0,.35);padding:22px 20px 26px;text-align:center;transform:translateY(110%);transition:transform .35s ease}
+  .wa-sheet.show{transform:translateY(0)}
+  .wa-sheet h3{font-size:1.35rem;margin:0 0 .3rem;color:var(--navy)}
+  .wa-sheet p{margin:0 0 1rem;color:var(--muted);font-size:.98rem}
+  .wa-sheet .wa-big{display:block;max-width:520px;margin:0 auto;background:#25D366;color:#fff;font-weight:800;font-size:1.25rem;text-decoration:none;padding:18px 20px;border-radius:16px;box-shadow:0 10px 24px -8px rgba(37,211,102,.7)}
+  .wa-sheet .wa-close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.6rem;line-height:1;color:#888;cursor:pointer}
+  .wa-sheet small{display:block;margin-top:.7rem;color:var(--muted)}
+</style>
+<div class="wa-sheet" id="waSheet" role="dialog" aria-label="Chat WhatsApp 8020">
+  <button class="wa-close" type="button" aria-label="Tutup">&times;</button>
+  <h3 id="waSheetTitle">Mau tanya atau booking?</h3>
+  <p id="waSheetText">Chat langsung dengan tim 8020 di WhatsApp, dibalas cepat.</p>
+  <a class="wa-big" id="waSheetBtn" href="https://wa.me/628115305456?text=Halo%208020%2C%20saya%20mau%20tanya" target="_blank" rel="noopener">Chat WhatsApp sekarang</a>
+  <small>WA 0811-5305-456 · Buka setiap hari 08.00-23.00</small>
+</div>
+<script>
+  // Panel WA besar untuk pengunjung dari iklan (URL berisi sl=, gclid, gbraid, wbraid)
+  (function(){
+    var q=new URLSearchParams(location.search);
+    if(!(q.get('sl')||q.get('gclid')||q.get('gbraid')||q.get('wbraid'))) return;
+    var sl=(q.get('sl')||'').toLowerCase();
+    var M={
+      cowork:['Sewa ruang co-working?','Rp300rb / 3 jam per ruang, diskon 20% khusus November. Tanya ketersediaan & harga member.','Halo 8020, saya mau tanya sewa co-working / meeting room'],
+      meeting:['Booking meeting room?','Proyektor, AC & Wi-Fi cepat. Cek jadwal kosong langsung di WhatsApp.','Halo 8020, saya mau booking meeting room'],
+      booking:['Booking ruang atau meja?','Kabari tanggal & jumlah orang, tim 8020 konfirmasi cepat.','Halo 8020, saya mau booking'],
+      coworking:['Co-working harian?','Kerja tenang sambil ngopi. Tanya ketersediaan ruang hari ini.','Halo 8020, saya mau tanya co-working'],
+      kopi:['Mau ngopi di 8020?','Kopi roasting sendiri, cold brew & manual brew. Bisa pesan antar juga.','Halo 8020, saya mau pesan kopi'],
+      lunch:['Pesan makan siang?','Paket Coco-Rice mulai Rp24.500. Dine-in, take away atau pesan antar.','Halo 8020, saya mau pesan makan siang']
+    };
+    var m=M[sl];
+    if(m){
+      document.getElementById('waSheetTitle').textContent=m[0];
+      document.getElementById('waSheetText').textContent=m[1];
+      document.getElementById('waSheetBtn').href='https://wa.me/628115305456?text='+encodeURIComponent(m[2]);
+    }
+    var s=document.getElementById('waSheet');
+    try{ if(sessionStorage.getItem('waSheetClosed')) return; }catch(e){}
+    setTimeout(function(){ s.classList.add('show'); },1200);
+    s.querySelector('.wa-close').addEventListener('click',function(){
+      s.classList.remove('show'); try{ sessionStorage.setItem('waSheetClosed','1'); }catch(e){}
+    });
+  })();
+</script>
 <script>
   // Konversi Google Ads: klik WhatsApp
   document.addEventListener('click',function(e){
