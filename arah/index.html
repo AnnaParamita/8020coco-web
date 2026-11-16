@@ -33,5 +33,12 @@
   <a class="btn alt" href="https://8020coco.com/">Lihat menu dan info</a>
   <p class="small">Pesan atau tanya lewat WhatsApp 0811-5305-456.</p>
 </main>
+<script>
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href*="maps.google.com"],a[href*="google.com/maps"],a[href*="maps.app.goo.gl"],a[href*="goo.gl/maps"]');
+  if(!a)return;
+  try{gtag('event','conversion',{send_to:'AW-18561015708/7A_XCMSUz7kdEJy_ypJF',transport_type:'beacon'});}catch(err){}
+});
+</script>
 </body>
 </html>
